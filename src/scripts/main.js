@@ -7,6 +7,8 @@ const itemsList = root.querySelector('.todo-list');
 const allToggler = root.querySelector('.toggle-all');
 const clearCompletedButton = root.querySelector('.clear-completed');
 
+const filter = root.querySelector('.filters');
+
 function updateInfo() {
   const completedTogglers = root.querySelectorAll('.toggle:checked');
   const notCompletedTogglers = root.querySelectorAll('.toggle:not(:checked)');
@@ -16,6 +18,37 @@ function updateInfo() {
   allToggler.checked = notCompletedTogglers.length === 0;
   clearCompletedButton.hidden = completedTogglers.length === 0;
 }
+
+filter.addEventListener('click', (event) => {
+  if (!event.target.dataset.filter) {
+    return;
+  }
+
+  const filterButtons = root.querySelectorAll('[data-filter]');
+
+  for (const button of filterButtons) {
+    button.classList.toggle('selected', event.target === button);
+  }
+
+  const togglers = root.querySelectorAll('.toggle');
+
+  for (const toggler of togglers) {
+    const item = toggler.closest('.todo-item');
+
+    switch (event.target.dataset.filter) {
+      case 'all':
+        item.hidden = false;
+        break;
+
+      case 'active':
+        item.hidden = toggler.checked;
+        break;
+
+      case 'completed':
+        item.hidden = !toggler.checked;
+    }
+  }
+});
 
 clearCompletedButton.addEventListener('click', () => {
   const completedTogglers = root.querySelectorAll('.toggle:checked');
