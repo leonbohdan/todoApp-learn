@@ -2,12 +2,82 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-    <link rel="stylesheet" href="./styles/main.scss">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
+    <title>todoApp-learn</title>
+    <!-- <link rel="stylesheet" href="./styles/base.css"> -->
+    <link rel="stylesheet" href="./styles/index.css">
   </head>
   <body>
-    <h1>Hello Mate Academy</h1>
+
+    <section class="todoapp">
+      <header class="header">
+        <h1>todos</h1>
+        <input class="new-todo" placeholder="What needs to be done?">
+      </header>
+
+      <section class="main">
+        <input
+          id="toggle-all"
+          class="toggle-all"
+          type="checkbox"
+        >
+        <label for="toggle-all">Mark all as complete</label>
+
+        <ul class="todo-list">
+          <li class="completed">
+            <input
+              id="todo-1"
+              class="toggle"
+              type="checkbox"
+              checked
+            >
+            <label for="todo-1">HTML</label>
+            <button class="destroy"></button>
+          </li>
+
+          <li class="completed">
+            <input
+              id="todo-2"
+              class="toggle"
+              type="checkbox"
+              checked
+            >
+            <label for="todo-2">CSS</label>
+            <button class="destroy"></button>
+          </li>
+
+          <li class="">
+            <input
+              id="todo-3"
+              class="toggle"
+              type="checkbox"
+            >
+            <label for="todo-3">JavaScript</label>
+            <button class="destroy"></button>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <span class="todo-count"><strong>1</strong> item left</span>
+        <ul class="filters">
+          <li>
+            <a href="#/" class="selected">All</a>
+          </li>
+          <li>
+            <a href="#/active">Active</a>
+          </li>
+          <li>
+            <a href="#/completed">Completed</a>
+          </li>
+        </ul>
+        <button class="clear-completed">Clear completed</button>
+      </footer>
+    </section>
+
     <script type="text/javascript" src="scripts/main.js"></script>
   </body>
 </html>
