@@ -27,7 +27,7 @@
         <label for="toggle-all">Mark all as complete</label>
 
         <ul class="todo-list">
-          <li class="completed">
+          <li class="todo-item completed">
             <input
               id="todo-1"
               class="toggle"
@@ -38,7 +38,7 @@
             <button class="destroy"></button>
           </li>
 
-          <li class="completed">
+          <li class="todo-item completed">
             <input
               id="todo-2"
               class="toggle"
@@ -49,7 +49,7 @@
             <button class="destroy"></button>
           </li>
 
-          <li class="">
+          <li class="todo-item">
             <input
               id="todo-3"
               class="toggle"
@@ -62,18 +62,24 @@
       </section>
 
       <footer class="footer">
-        <span class="todo-count"><strong>1</strong> item left</span>
+        <span class="todo-count">
+          1 item left
+        </span>
+
         <ul class="filters">
           <li>
             <a href="#/" class="selected">All</a>
           </li>
+
           <li>
             <a href="#/active">Active</a>
           </li>
+
           <li>
             <a href="#/completed">Completed</a>
           </li>
         </ul>
+
         <button class="clear-completed">Clear completed</button>
       </footer>
     </section>
