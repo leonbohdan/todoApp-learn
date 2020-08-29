@@ -5,15 +5,27 @@ const root = document.querySelector('.todoapp');
 const newTodoField = document.querySelector('.new-todo');
 const itemsList = root.querySelector('.todo-list');
 const allToggler = root.querySelector('.toggle-all');
+const clearCompletedButton = root.querySelector('.clear-completed');
 
 function updateInfo() {
+  const completedTogglers = root.querySelectorAll('.toggle:checked');
   const notCompletedTogglers = root.querySelectorAll('.toggle:not(:checked)');
   const counter = root.querySelector('.todo-count');
 
   counter.innerHTML = `${notCompletedTogglers.length} item left`;
-
   allToggler.checked = notCompletedTogglers.length === 0;
+  clearCompletedButton.hidden = completedTogglers.length === 0;
 }
+
+clearCompletedButton.addEventListener('click', () => {
+  const completedTogglers = root.querySelectorAll('.toggle:checked');
+
+  for (const toggler of completedTogglers) {
+    toggler.closest('.todo-item').remove();
+  }
+
+  updateInfo();
+});
 
 allToggler.addEventListener('change', () => {
   const togglers = root.querySelectorAll('.toggle');
