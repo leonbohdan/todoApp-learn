@@ -1,13 +1,46 @@
 'use strict';
 
+const todosFromServer = [
+  {
+    id: 1, title: 'HTML', completed: true,
+  },
+  {
+    id: 2, title: 'CSS', completed: true,
+  },
+  {
+    id: 3, title: 'JavaScript', completed: false,
+  },
+];
+
 const root = document.querySelector('.todoapp');
 
 const newTodoField = document.querySelector('.new-todo');
 const itemsList = root.querySelector('.todo-list');
 const allToggler = root.querySelector('.toggle-all');
 const clearCompletedButton = root.querySelector('.clear-completed');
-
 const filter = root.querySelector('.filters');
+
+initTodos(todosFromServer);
+
+function initTodos(todos) {
+  for (const todo of todos) {
+    itemsList.insertAdjacentHTML(
+      'beforeend', `
+      <li class="todo-item ${todo.completed ? 'completed' : ''}">
+        <input
+          id="todo-${todo.id}"
+          class="toggle"
+          type="checkbox"
+          ${todo.completed ? 'checked' : ''}
+        >
+        <label for="todo-${todo.id}">${todo.title}</label>
+        <button class="destroy"></button>
+      </li>
+    `);
+  }
+
+  updateInfo();
+}
 
 function updateInfo() {
   const completedTogglers = root.querySelectorAll('.toggle:checked');
