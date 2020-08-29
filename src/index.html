@@ -19,12 +19,14 @@
       </header>
 
       <section class="main">
-        <input
-          id="toggle-all"
-          class="toggle-all"
-          type="checkbox"
-        >
-        <label for="toggle-all">Mark all as complete</label>
+        <span class="toggle-all-container">
+          <input
+            id="toggle-all"
+            class="toggle-all"
+            type="checkbox"
+          >
+          <label for="toggle-all">Mark all as complete</label>
+        </span>
 
         <ul class="todo-list">
           <li class="todo-item completed">
@@ -68,7 +70,13 @@
 
         <ul class="filters">
           <li>
-            <a href="#/" class="selected" data-filter="all">All</a>
+            <a
+              href="#/"
+              class="selected"
+              data-filter="all"
+            >
+              All
+            </a>
           </li>
 
           <li>

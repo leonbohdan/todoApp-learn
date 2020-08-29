@@ -11,12 +11,19 @@ const filter = root.querySelector('.filters');
 
 function updateInfo() {
   const completedTogglers = root.querySelectorAll('.toggle:checked');
-  const notCompletedTogglers = root.querySelectorAll('.toggle:not(:checked)');
+  const activeTogglers = root.querySelectorAll('.toggle:not(:checked)');
   const counter = root.querySelector('.todo-count');
+  const footer = root.querySelector('.footer');
+  const toggleAllContainer = root.querySelector('.toggle-all-container');
 
-  counter.innerHTML = `${notCompletedTogglers.length} item left`;
-  allToggler.checked = notCompletedTogglers.length === 0;
+  counter.innerHTML = `${activeTogglers.length} item left`;
+  allToggler.checked = activeTogglers.length === 0;
   clearCompletedButton.hidden = completedTogglers.length === 0;
+
+  const hasTodos = completedTogglers.length > 0 || activeTogglers.length > 0;
+
+  footer.hidden = !hasTodos;
+  toggleAllContainer.hidden = !hasTodos;
 }
 
 filter.addEventListener('click', (event) => {
